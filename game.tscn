@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmr8w4kmxtt01"]
+
+[ext_resource type="Texture2D" uid="uid://m35ara1eljfb" path="res://images.png" id="1_80nbo"]
+[ext_resource type="PackedScene" uid="uid://sle168uvhvfu" path="res://fighter.tscn" id="2_e2o6t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2o6t"]
+size = Vector2(1906, 83)
+
+[node name="Game" type="Node"]
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(916, 908)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
+position = Vector2(35.5001, 48)
+scale = Vector2(8.42222, 0.968889)
+texture = ExtResource("1_80nbo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(41, -21.5)
+shape = SubResource("RectangleShape2D_e2o6t")
+
+[node name="Fighter1" parent="." instance=ExtResource("2_e2o6t")]
+position = Vector2(238, 138)
+
+[node name="Fighter2" parent="." instance=ExtResource("2_e2o6t")]
+position = Vector2(1679, 141)
+num = "p2_"

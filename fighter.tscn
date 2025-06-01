@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://sle168uvhvfu"]
+
+[ext_resource type="Texture2D" uid="uid://m35ara1eljfb" path="res://images.png" id="1_efvb3"]
+[ext_resource type="Script" uid="uid://igayhf4edim0" path="res://fighter.gd" id="1_umvcx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_umvcx"]
+size = Vector2(89, 81)
+
+[node name="Fighter" type="CharacterBody2D"]
+script = ExtResource("1_umvcx")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -3.8147e-06)
+scale = Vector2(0.4, 0.364444)
+texture = ExtResource("1_efvb3")
+
+[node name="Nose" type="Sprite2D" parent="Sprite"]
+position = Vector2(108.75, -10.9756)
+scale = Vector2(0.344444, 0.243902)
+texture = ExtResource("1_efvb3")
+
+[node name="ShootingPoint" type="Marker2D" parent="Sprite/Nose"]
+unique_name_in_owner = true
+position = Vector2(177.823, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -0.5)
+shape = SubResource("RectangleShape2D_umvcx")
+
+[node name="Bullets" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="CooldownTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.25
+one_shot = true
