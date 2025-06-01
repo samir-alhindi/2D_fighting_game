@@ -41,6 +41,7 @@ func _physics_process(delta: float) -> void:
 		%Bullets.add_child(bullet)
 		bullet.global_position = %ShootingPoint.global_position
 		bullet.dir = 1 if %Nose.position.x > 0 else -1
+		bullet.modulate = modulate
 	
 	
 	move_and_slide()
@@ -52,4 +53,5 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 		health -= 10
 		%HealthLabel.text = "HP: " + str(health)
 		if health <= 0:
+			get_parent().i_died.emit(num)
 			queue_free()
