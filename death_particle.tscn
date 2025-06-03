@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://d10x4brjxkk0k"]
+[gd_scene load_steps=2 format=3 uid="uid://cvsoixker4k6d"]
 
-[ext_resource type="Script" uid="uid://ct4fnhbj8trcd" path="res://particle.gd" id="1_rlo5e"]
+[ext_resource type="Script" uid="uid://ct4fnhbj8trcd" path="res://particle.gd" id="1_b8p28"]
 
-[node name="HurtParticle" type="CPUParticles2D"]
+[node name="DeathParticle" type="CPUParticles2D"]
 emitting = false
-lifetime = 0.25
+amount = 50
+lifetime = 7.0
 one_shot = true
+speed_scale = 7.0
 explosiveness = 1.0
 emission_shape = 1
 emission_sphere_radius = 18.39
@@ -18,8 +20,8 @@ angular_velocity_min = 148.7
 angular_velocity_max = 148.7
 linear_accel_max = 30.43
 damping_max = 20.109
-scale_amount_min = 10.0
-scale_amount_max = 20.0
-script = ExtResource("1_rlo5e")
+scale_amount_min = 5.0
+scale_amount_max = 100.0
+script = ExtResource("1_b8p28")
 
 [connection signal="finished" from="." to="." method="_on_finished"]

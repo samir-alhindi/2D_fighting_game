@@ -67,7 +67,6 @@ func _physics_process(delta: float) -> void:
 		bullet.dir = 1 if %Nose.position.x > 0 else -1
 		bullet.modulate = color
 	
-	
 	move_and_slide()
 
 
@@ -87,5 +86,5 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 		var knockback_force := 250 * dir
 		velocity.x = knockback_force
 		if health <= 0:
-			get_parent().i_died.emit(num)
+			get_parent().i_died.emit(num, global_position)
 			queue_free()

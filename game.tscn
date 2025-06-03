@@ -1,11 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmr8w4kmxtt01"]
+[gd_scene load_steps=10 format=3 uid="uid://bmr8w4kmxtt01"]
 
-[ext_resource type="Texture2D" uid="uid://m35ara1eljfb" path="res://images.png" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://drhfwkjpfnilv" path="res://game.gd" id="1_feb5d"]
 [ext_resource type="PackedScene" uid="uid://sle168uvhvfu" path="res://fighter.tscn" id="2_e2o6t"]
+[ext_resource type="Texture2D" uid="uid://cunm2dw12s3nd" path="res://pattern_55.png" id="3_eow3j"]
+[ext_resource type="AudioStream" uid="uid://cowg5qber7sry" path="res://sound/death.wav" id="4_fc0e3"]
+[ext_resource type="Texture2D" uid="uid://cklgfla6taxfa" path="res://pattern_07.png" id="5_7jktm"]
+[ext_resource type="Shader" uid="uid://d20aobhivpyyn" path="res://scroll_shader.gdshader" id="5_ryrav"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eow3j"]
+shader = ExtResource("5_ryrav")
+shader_parameter/pattern_sampler = ExtResource("3_eow3j")
+shader_parameter/Top_Color = Color(1, 1, 1, 1)
+shader_parameter/Mid_Color = Color(1, 1, 1, 1)
+shader_parameter/Bot_Color = Color(0, 0, 0, 1)
+shader_parameter/pattern_color = Color(1, 1, 1, 1)
+shader_parameter/scale = 3.595
+shader_parameter/ratio = 0.55
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2o6t"]
-size = Vector2(1906, 83)
+size = Vector2(2068, 83)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_feb5d"]
 size = Vector2(402, 97)
@@ -13,64 +26,84 @@ size = Vector2(402, 97)
 [node name="Game" type="Node"]
 script = ExtResource("1_feb5d")
 
+[node name="BG" type="Sprite2D" parent="."]
+modulate = Color(0.141317, 0.687111, 0.992875, 1)
+texture_repeat = 2
+material = SubResource("ShaderMaterial_eow3j")
+scale = Vector2(7.48438, 3.30859)
+texture = ExtResource("5_7jktm")
+centered = false
+
 [node name="Terrain" type="Node" parent="."]
 
 [node name="Floor" type="StaticBody2D" parent="Terrain"]
 position = Vector2(916, 908)
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Terrain/Floor"]
-position = Vector2(35.5001, 48)
-scale = Vector2(8.42222, 0.968889)
-texture = ExtResource("1_80nbo")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Floor"]
-position = Vector2(41, -21.5)
+position = Vector2(31, -21.5)
 shape = SubResource("RectangleShape2D_e2o6t")
+
+[node name="ColorRect" type="ColorRect" parent="Terrain/Floor"]
+offset_left = -1010.0
+offset_top = -66.0
+offset_right = 1064.0
+offset_bottom = 203.0
+color = Color(0, 0, 0, 1)
 
 [node name="Platform" type="StaticBody2D" parent="Terrain"]
 position = Vector2(297, 613)
 
-[node name="Sprite2D" type="Sprite2D" parent="Terrain/Platform"]
-scale = Vector2(1.82, 0.446667)
-texture = ExtResource("1_80nbo")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Platform"]
 shape = SubResource("RectangleShape2D_feb5d")
+
+[node name="ColorRect" type="ColorRect" parent="Terrain/Platform"]
+offset_left = -203.0
+offset_top = -50.0
+offset_right = 204.0
+offset_bottom = 48.0
+color = Color(0, 0, 0, 1)
 
 [node name="Platform3" type="StaticBody2D" parent="Terrain"]
 position = Vector2(1581, 613)
 
-[node name="Sprite2D" type="Sprite2D" parent="Terrain/Platform3"]
-scale = Vector2(1.82, 0.446667)
-texture = ExtResource("1_80nbo")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Platform3"]
 shape = SubResource("RectangleShape2D_feb5d")
+
+[node name="ColorRect" type="ColorRect" parent="Terrain/Platform3"]
+offset_left = -203.0
+offset_top = -50.0
+offset_right = 204.0
+offset_bottom = 48.0
+color = Color(0, 0, 0, 1)
 
 [node name="Platform2" type="StaticBody2D" parent="Terrain"]
 position = Vector2(947, 342)
 
-[node name="Sprite2D" type="Sprite2D" parent="Terrain/Platform2"]
-scale = Vector2(1.82, 0.446667)
-texture = ExtResource("1_80nbo")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Platform2"]
 shape = SubResource("RectangleShape2D_feb5d")
 
+[node name="ColorRect" type="ColorRect" parent="Terrain/Platform2"]
+offset_left = -203.0
+offset_top = -50.0
+offset_right = 204.0
+offset_bottom = 48.0
+color = Color(0, 0, 0, 1)
+
 [node name="Fighter1" parent="." instance=ExtResource("2_e2o6t")]
 position = Vector2(238, 138)
-color = Color(1, 0, 0, 1)
+color = Color(0.835781, 0.246811, 0.455476, 1)
 
 [node name="Fighter2" parent="." instance=ExtResource("2_e2o6t")]
 position = Vector2(1679, 141)
 num = "p2_"
-color = Color(0, 0, 1, 1)
+color = Color(0.235111, 0.27581, 0.690659, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="WonLabel" type="Label" parent="CanvasLayer"]
 unique_name_in_owner = true
+visible = false
 modulate = Color(1, 0, 0, 1)
 anchors_preset = 5
 anchor_left = 0.5
@@ -84,3 +117,8 @@ theme_override_font_sizes/font_size = 200
 text = "Yellow wins !!!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_fc0e3")
+volume_db = -11.674
