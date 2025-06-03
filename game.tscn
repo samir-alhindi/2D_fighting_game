@@ -59,13 +59,13 @@ texture = ExtResource("1_80nbo")
 shape = SubResource("RectangleShape2D_feb5d")
 
 [node name="Fighter1" parent="." instance=ExtResource("2_e2o6t")]
-modulate = Color(1, 0, 0, 1)
 position = Vector2(238, 138)
+color = Color(1, 0, 0, 1)
 
 [node name="Fighter2" parent="." instance=ExtResource("2_e2o6t")]
-modulate = Color(0, 0, 1, 1)
 position = Vector2(1679, 141)
 num = "p2_"
+color = Color(0, 0, 1, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

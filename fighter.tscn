@@ -1,31 +1,209 @@
-[gd_scene load_steps=5 format=3 uid="uid://sle168uvhvfu"]
+[gd_scene load_steps=17 format=3 uid="uid://sle168uvhvfu"]
 
-[ext_resource type="Texture2D" uid="uid://m35ara1eljfb" path="res://images.png" id="1_efvb3"]
 [ext_resource type="Script" uid="uid://igayhf4edim0" path="res://fighter.gd" id="1_umvcx"]
+[ext_resource type="Shader" uid="uid://c7nigujrpuia6" path="res://hurt.gdshader" id="2_3ypa3"]
+[ext_resource type="AudioStream" uid="uid://c2xf2j37jgvw7" path="res://sound/jump.wav" id="3_l3gly"]
+[ext_resource type="AudioStream" uid="uid://bn3wkgex8dahe" path="res://sound/shoot.wav" id="3_qq641"]
+[ext_resource type="AudioStream" uid="uid://x3hud7xna2n4" path="res://sound/land.wav" id="4_3ypa3"]
+[ext_resource type="AudioStream" uid="uid://c5aggayot631w" path="res://sound/hurt.wav" id="6_f18uy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ypa3"]
+resource_local_to_scene = true
+shader = ExtResource("2_3ypa3")
+shader_parameter/flash_color = Color(1, 1, 1, 0)
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f18uy"]
+resource_local_to_scene = true
+shader = ExtResource("2_3ypa3")
+shader_parameter/flash_color = Color(1, 1, 1, 0)
+shader_parameter/flash_value = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_umvcx"]
-size = Vector2(89, 81)
+size = Vector2(90, 90)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qq641"]
-size = Vector2(90, 81)
+size = Vector2(90, 90)
+
+[sub_resource type="Animation" id="Animation_qq641"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:material:shader_parameter/flash_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:material:shader_parameter/flash_value")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite/Nose:material:shader_parameter/flash_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite/Nose:material:shader_parameter/flash_value")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_umvcx"]
+resource_name = "jump"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.102368, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.7, 1.3), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_l3gly"]
+resource_name = "land"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.3, 0.7), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_066e6"]
+resource_name = "hurt"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:material:shader_parameter/flash_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:material:shader_parameter/flash_value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite/Nose:material:shader_parameter/flash_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite/Nose:material:shader_parameter/flash_value")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qq641"]
+_data = {
+&"RESET": SubResource("Animation_qq641"),
+&"hurt": SubResource("Animation_066e6"),
+&"jump": SubResource("Animation_umvcx"),
+&"land": SubResource("Animation_l3gly")
+}
+
+[sub_resource type="Gradient" id="Gradient_l3gly"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="Fighter" type="CharacterBody2D"]
 script = ExtResource("1_umvcx")
 
-[node name="Nose" type="Sprite2D" parent="."]
+[node name="Sprite" type="ColorRect" parent="."]
 unique_name_in_owner = true
-position = Vector2(46, -6)
-scale = Vector2(0.137778, 0.0888886)
-texture = ExtResource("1_efvb3")
+material = SubResource("ShaderMaterial_3ypa3")
+offset_right = 90.0
+offset_bottom = 90.0
+pivot_offset = Vector2(45, 45)
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Nose" type="ColorRect" parent="Sprite"]
 unique_name_in_owner = true
-position = Vector2(0, -3.8147e-06)
-scale = Vector2(0.4, 0.364444)
-texture = ExtResource("1_efvb3")
+material = SubResource("ShaderMaterial_f18uy")
+layout_mode = 0
+offset_left = -30.0
+offset_top = 27.0
+offset_bottom = 57.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, -0.5)
+position = Vector2(45, 45)
 shape = SubResource("RectangleShape2D_umvcx")
 
 [node name="Bullets" type="Node" parent="."]
@@ -39,22 +217,61 @@ one_shot = true
 [node name="HurtBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(-1, -0.5)
+position = Vector2(45, 45)
 shape = SubResource("RectangleShape2D_qq641")
 debug_color = Color(0.955126, 0, 0.544843, 0.42)
 
 [node name="HealthLabel" type="Label" parent="."]
 unique_name_in_owner = true
-offset_left = -52.0
-offset_top = -87.0
-offset_right = 56.0
-offset_bottom = -45.0
+offset_top = -47.0
+offset_right = 108.0
+offset_bottom = -5.0
 theme_override_font_sizes/font_size = 30
 text = "HP: 100"
 
 [node name="ShootingPoint" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(72, -7)
+position = Vector2(-46, 42)
 scale = Vector2(0.137778, 0.0888886)
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_qq641")
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_qq641")
+}
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_l3gly")
+
+[node name="LandJump" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_3ypa3")
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_f18uy")
+
+[node name="WalkingParticles" type="CPUParticles2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(97, 85)
+amount = 12
+lifetime = 2.93
+speed_scale = 2.35
+emission_shape = 1
+emission_sphere_radius = 23.95
+gravity = Vector2(-20, 0)
+angular_velocity_max = 101.74
+scale_amount_min = 0.0
+scale_amount_max = 47.37
+color_ramp = SubResource("Gradient_l3gly")
+hue_variation_max = 0.52
+
+[node name="Particles" type="Node" parent="."]
+unique_name_in_owner = true
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
