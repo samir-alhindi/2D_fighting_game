@@ -77,7 +77,7 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 		instance.global_position = area.global_position
 		instance.color = color
 		%Particles.add_child(instance)
-		%Anim.play("hurt")
+		%Anim2.play("hurt")
 		%HurtSound.play()
 		area.queue_free()
 		health -= 10

@@ -18,7 +18,7 @@ func _ready() -> void:
 			elif who == "p2_":
 				%WonLabel.text = "Red wins !!!"
 				%WonLabel.modulate = Color(255.0, 0.0, 0.0)
-				instance.color = Color(0.0, 0.0, 255.0)
+				instance.color = Color(255.0, 0.0, 0.0)
 			%WonLabel.show()
 			await get_tree().create_timer(3).timeout
 			get_tree().reload_current_scene()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://sle168uvhvfu"]
+[gd_scene load_steps=19 format=3 uid="uid://sle168uvhvfu"]
 
 [ext_resource type="Script" uid="uid://igayhf4edim0" path="res://fighter.gd" id="1_umvcx"]
 [ext_resource type="Shader" uid="uid://c7nigujrpuia6" path="res://hurt.gdshader" id="2_3ypa3"]
@@ -180,6 +180,63 @@ _data = {
 &"land": SubResource("Animation_l3gly")
 }
 
+[sub_resource type="Animation" id="Animation_f18uy"]
+resource_name = "hurt"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:material:shader_parameter/flash_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:material:shader_parameter/flash_value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite/Nose:material:shader_parameter/flash_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite/Nose:material:shader_parameter/flash_value")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_066e6"]
+_data = {
+&"hurt": SubResource("Animation_f18uy")
+}
+
 [sub_resource type="Gradient" id="Gradient_l3gly"]
 interpolation_mode = 2
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -238,6 +295,12 @@ scale = Vector2(0.137778, 0.0888886)
 unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_qq641")
+}
+
+[node name="Anim2" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_066e6")
 }
 
 [node name="ShootSound" type="AudioStreamPlayer" parent="."]
