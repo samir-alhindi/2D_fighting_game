@@ -1,14 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmr8w4kmxtt01"]
+[gd_scene load_steps=8 format=3 uid="uid://bmr8w4kmxtt01"]
 
 [ext_resource type="Script" uid="uid://drhfwkjpfnilv" path="res://game.gd" id="1_feb5d"]
 [ext_resource type="PackedScene" uid="uid://sle168uvhvfu" path="res://fighter.tscn" id="2_e2o6t"]
 [ext_resource type="AudioStream" uid="uid://cowg5qber7sry" path="res://sound/death.wav" id="4_fc0e3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2o6t"]
-size = Vector2(2068, 83)
+size = Vector2(2246, 81)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_feb5d"]
 size = Vector2(402, 97)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fc0e3"]
+size = Vector2(60, 1120)
 
 [sub_resource type="Environment" id="Environment_feb5d"]
 background_mode = 3
@@ -33,17 +36,17 @@ position = Vector2(916, 908)
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Floor"]
-position = Vector2(31, -21.5)
+position = Vector2(30, -22.5)
 shape = SubResource("RectangleShape2D_e2o6t")
 
 [node name="ColorRect" type="ColorRect" parent="Terrain/Floor"]
 offset_left = -1010.0
-offset_top = -66.0
+offset_top = -59.0
 offset_right = 1091.0
 offset_bottom = 203.0
 
 [node name="Platform" type="StaticBody2D" parent="Terrain"]
-position = Vector2(297, 613)
+position = Vector2(340, 613)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Platform"]
 shape = SubResource("RectangleShape2D_feb5d")
@@ -56,7 +59,7 @@ offset_bottom = 48.0
 color = Color(0.654902, 0.341176, 0.329412, 1)
 
 [node name="Platform3" type="StaticBody2D" parent="Terrain"]
-position = Vector2(1581, 613)
+position = Vector2(1580, 613)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Platform3"]
 shape = SubResource("RectangleShape2D_feb5d")
@@ -69,7 +72,7 @@ offset_bottom = 48.0
 color = Color(0.654902, 0.341176, 0.329412, 1)
 
 [node name="Platform2" type="StaticBody2D" parent="Terrain"]
-position = Vector2(947, 342)
+position = Vector2(960, 342)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Platform2"]
 shape = SubResource("RectangleShape2D_feb5d")
@@ -80,6 +83,18 @@ offset_top = -50.0
 offset_right = 204.0
 offset_bottom = 48.0
 color = Color(0.654902, 0.341176, 0.329412, 1)
+
+[node name="Wall1" type="StaticBody2D" parent="Terrain"]
+position = Vector2(-40, 320)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Wall1"]
+shape = SubResource("RectangleShape2D_fc0e3")
+
+[node name="Wall2" type="StaticBody2D" parent="Terrain"]
+position = Vector2(1960, 320)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Wall2"]
+shape = SubResource("RectangleShape2D_fc0e3")
 
 [node name="Fighter1" parent="." instance=ExtResource("2_e2o6t")]
 position = Vector2(238, 138)
@@ -99,14 +114,13 @@ modulate = Color(1, 0, 0, 1)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -662.0
-offset_top = 10.0
-offset_right = 681.0
-offset_bottom = 283.0
+offset_left = -943.0
+offset_top = 875.0
+offset_right = 65.0
+offset_bottom = 1080.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 200
-text = "Yellow wins !!!"
-horizontal_alignment = 1
+theme_override_font_sizes/font_size = 150
+text = "Color wins !"
 vertical_alignment = 1
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
